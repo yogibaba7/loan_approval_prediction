@@ -29,3 +29,5 @@ stages:
     - data/processed
     metrics:
     - reports/metrics.json
+    outs:
+    - reports/model_info.json
