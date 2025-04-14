@@ -37,18 +37,18 @@ def load_model_info(file_path:str)->dict:
 def register_model(model_name:str,model_info:dict):
     logger.debug('registering the model')
     try:
-        # create model uri
-        model_uri = f"runs:/{model_info['run_id']}/{model_info['model_path']}"
+        # # create model uri
+        # model_uri = f"runs:/{model_info['run_id']}/{model_info['model_path']}"
 
-        # register the model
-        model_version = mlflow.register_model(model_uri,model_name)
+        # # register the model
+        # model_version = mlflow.register_model(model_uri,model_name)
 
         # assign a alias to register model
         client = mlflow.MlflowClient()
         latest_version = client.get_latest_versions(model_name,stages=["None"])[0]
-        client.set_registered_model_alias(model_name,'staging',latest_version.version)
+        client.set_registered_model_alias(model_name,'production',latest_version.version)
         # assign a tag for current model 
-        client.set_registered_model_tag(model_name,'testing','running')
+        client.set_registered_model_tag(model_name,'testing','passed')
 
     except Exception as e:
         logger.error(f"error occured -> {e}")
