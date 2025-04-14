@@ -15,3 +15,10 @@ stages:
     - models/encoder.pkl
     - models/imputer.pkl
     - models/scaler.pkl
+  model_building:
+    cmd: python src/model/model_building.py
+    deps:
+    - data/processed
+    - src/model/model_building.py
+    outs:
+    - models/model.pkl

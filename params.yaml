@@ -1,3 +1,6 @@
 data_ingestion:
   test_size : 0.2
+model_building:
+  n_estimators : 70
+  learning_rate : 0.01
 
